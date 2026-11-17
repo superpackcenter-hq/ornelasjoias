@@ -38,7 +38,7 @@ footer{text-align:center;padding:30px 16px 50px;opacity:.7;font-family:Arial,san
 </head>
 <body>
 <nav>
-  <a data-p="home" class="on">Home</a><a data-p="prata">Prata 925</a><a data-p="banhado">Banhado</a>
+  <a data-p="home" class="on">Home</a><a data-p="prata">Prata 925</a><a data-p="banhado">Banhado</a><a data-p="ouro">Ouro</a>
 </nav>
 <header>
   <svg viewBox="0 0 120 100" fill="none" stroke="#d9b979" stroke-width="3" stroke-linejoin="round"><path d="M30 6h60l26 30-56 60L4 36z"/><path d="M4 36h112M44 6l16 30 16-30M60 36v60"/></svg>
@@ -49,6 +49,7 @@ footer{text-align:center;padding:30px 16px 50px;opacity:.7;font-family:Arial,san
   <div class="btns">
     <a class="btn" data-go="banhado">Banhado</a>
     <a class="btn" data-go="prata">Prata 925</a>
+    <a class="btn" data-go="ouro">Ouro</a>
     <a class="btn wa" data-wa>WhatsApp</a>
   </div>
 </section>
@@ -63,6 +64,13 @@ footer{text-align:center;padding:30px 16px 50px;opacity:.7;font-family:Arial,san
   </div>
 </section>
 
+<section class="page" id="ouro">
+  <div class="btns">
+    <a class="btn" data-go="aliancasouro">Alianças de Ouro</a>
+    <a class="btn wa" data-wa>WhatsApp</a>
+  </div>
+</section>
+<section class="page" id="aliancasouro"><h2>Alianças de Ouro</h2><div class="grid" data-cat="aliancasouro"></div><div class="back"><a data-go="ouro">← voltar</a></div></section>
 <section class="page" id="banhado"><div class="soon">Banhado — em breve.<br><br><a class="btn wa" data-wa style="display:inline-block;padding:14px 30px;font-size:18px">Pergunte pelo WhatsApp</a></div></section>
 <section class="page" id="novidades"><h2>Novidades</h2><div class="grid" data-cat="novidades"></div><div class="back"><a data-go="prata">← voltar</a></div></section>
 <section class="page" id="solitarios"><h2>Solitários</h2><div class="grid" data-cat="solitarios"></div><div class="back"><a data-go="prata">← voltar</a></div></section>
@@ -81,24 +89,30 @@ const P = {
   solitarios: ["SOL02","SOL03","SOL06","SOL09","SOL11","SOL12","SOL14","SOL15","SOL20","SOL21","SOL27","SOL27|sol27_foto","SOL29","SOL31","SOL34","SOL36","SOL48","SOL978","SOL2118","SOL2118|sol2118a","AN154","AN167","AN259","AN439","AN0456","AN739","AN770","AN770|an770_foto","AN2080"],
   aneis: ["AN133","AN183","AN241","AN242","AN269","AN430","AN473","AN490","AN0687","AN884","AN924","AN925","AN976","AN996","AN1004","AN1005","AN1279","AN1299"]
 };
+const OURO = [["1001", "2", "2,2"], ["1002", "2", "2,4"], ["1027", "2", "2"], ["1028", "2", "3"], ["1039", "2", "4"], ["1048", "2", "2,6"], ["1055", "2", "2"], ["1073", "2", "4"], ["351P", "2.25", "5,1"], ["1003", "2.5", "3,8"], ["1004", "2.5", "3"], ["1005", "2.5", "3,5"], ["1006", "2.5", "2,8"], ["1049", "2.5", "5"], ["1076", "2.8", "2,4"], ["1007", "3", "3,3"], ["1008", "3", "2,5"], ["1009", "3", "4,5"], ["1029", "3", "3,5"], ["1030", "3", "5,5"], ["1050", "3", "6"], ["1056", "3", "4,5"], ["1066", "3", "6,2"], ["1072", "3", "3,6"], ["1075", "3", "2,6"], ["1078", "3", "2,4"], ["1089", "3", "18"], ["1094", "3", "4,2"], ["1010", "3.5", "4,3"], ["1011", "3.5", "5,6"], ["1031", "3.5", "8,5"], ["1032", "3.5", "6"], ["2012", "3.5", "4,5"], ["1012", "4", "5"], ["1013", "4", "9,8"], ["1014", "4", "9"], ["1015", "4", "7"], ["1016", "4", "9,4"], ["1033", "4", "13"], ["1034", "4", "8"], ["1035", "4", "6,5"], ["1036", "4", "9"], ["1051", "4", "7,5"], ["1057", "4", "7,5"], ["1057M", "4", "7,5"], ["1070", "4", "4"], ["1077", "4", "3,6"], ["1085", "4", "5,2"], ["1087", "4", "6,6"], ["1090", "4", "7,2"], ["1092", "4", "10"], ["2011", "4", "10,5"], ["370", "4", "10"], ["1052", "4.5", "9"], ["1017", "5", "7"], ["1018", "5", "7,2"], ["1019", "5", "10,5"], ["1020", "5", "14,5"], ["1038", "5", "10"], ["1058", "5", "9,6"], ["1059", "5", "9,6"], ["1071", "5", "13"], ["129", "5", "10"], ["129M", "5", "10"], ["2003", "5", "10,2"], ["2008", "5", "10"], ["259P", "5", "11,3"], ["1021", "5.5", "12,8"], ["1022", "5.5", "15,9"], ["1061", "5.7", "9,8"], ["1053", "6", "13"], ["1060", "6", "16,5"], ["1063", "6", "11"], ["1091", "6", "10"], ["1161", "6", ""], ["388", "6", "12"], ["470", "6", "14"], ["470P", "6", "14"], ["1025", "7", "16"], ["1026", "7", "22,6"], ["1062", "7", "12"], ["1069", "7", "16"], ["1037", "8", "17,7"], ["1054", "8", "22"], ["1068", "8", "16"], ["176P", "9", "22"], ["329", "9", "26"], ["329P", "9", "26"], ["330P", "9", "26"]];
 P.novidades = ["AN1299","AN1279","AN1005","AN1004","SOL36","SOL06"];
 
 const wa = t => "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(t);
 document.querySelectorAll('[data-wa]').forEach(a=>{a.href=wa("Olá! Vi o catálogo da Ornelas-Joias e gostaria de mais informações.");a.target="_blank"});
 
+function card(c,img,sub){
+  const el=document.createElement('div');el.className='item';
+  el.innerHTML='<img loading="lazy" src="img/'+img+'.jpg" alt="'+c+'"><div class="i"><b>Cód. '+c+'</b><small>'+sub+'</small><a target="_blank" href="'+wa('Olá! Tenho interesse na peça '+c+' (Ornelas-Joias).')+'">Pedir pelo WhatsApp</a></div>';
+  return el;
+}
 for (const [cat, codes] of Object.entries(P)) {
   const g = document.querySelector('[data-cat="'+cat+'"]');
   codes.forEach(raw=>{
     const [c,f]=raw.split('|');
-    const el=document.createElement('div');el.className='item';
-    el.innerHTML='<img loading="lazy" src="img/'+(f||c.toLowerCase())+'.jpg" alt="'+c+'"><div class="i"><b>Cód. '+c+'</b><small>Prata 925</small><a target="_blank" href="'+wa('Olá! Tenho interesse na peça '+c+' (Ornelas-Joias).')+'">Pedir pelo WhatsApp</a></div>';
-    g.appendChild(el);
+    g.appendChild(card(c,f||c.toLowerCase(),'Prata 925'));
   });
 }
+const go=document.querySelector('[data-cat="aliancasouro"]');
+OURO.forEach(([c,w,g])=>go.appendChild(card(c,'ouro_'+c.toLowerCase(),'Ouro'+(w?' · '+w.replace('.',',')+' mm':'')+(g?' · '+g+' g':''))));
 
 function show(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.toggle('on',p.id===id));
-  const top = id==='home'?'home':(id==='banhado'?'banhado':'prata');
+  const top = id==='home'?'home':(id==='banhado'?'banhado':(id==='ouro'||id==='aliancasouro'?'ouro':'prata'));
   document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.dataset.p===top));
   scrollTo(0,0);
 }
