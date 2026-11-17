@@ -110,24 +110,27 @@ const MOEDA = [["MA-175 e MA-175P", "moe_001"], ["MA-176 e MA-176P", "moe_002"],
 const wa = t => "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(t);
 document.querySelectorAll('[data-wa]').forEach(a=>{a.href=wa("Olá! Vi o catálogo da Ornelas-Joias e gostaria de mais informações.");a.target="_blank"});
 
-function card(c,img,sub){
-  const el=document.createElement('div');el.className='item';
-  el.innerHTML='<img loading="lazy" src="img/'+img+'.jpg" alt="'+c+'"><div class="i"><b>Cód. '+c+'</b><small>'+sub+'</small><a target="_blank" href="'+wa('Olá! Tenho interesse na peça '+c+' (Ornelas-Joias).')+'">Pedir pelo WhatsApp</a></div>';
+const LINK=()=>location.origin+location.pathname;
+function card(c,img,sub,label){
+  const el=document.createElement('div');el.className='item';el.id=img;
+  const msg='Olá! Tenho interesse na peça '+c+' ('+label+'). Ver no catálogo: '+LINK()+'#'+img;
+  el.innerHTML='<img loading="lazy" src="img/'+img+'.jpg" alt="'+c+'"><div class="i"><b>Cód. '+c+'</b><small>'+sub+'</small><a target="_blank" href="'+wa(msg)+'">Pedir pelo WhatsApp</a></div>';
   return el;
 }
+const LBL={aliancas:'Prata 925 - Alianças',solitarios:'Prata 925 - Solitários',aneis:'Prata 925 - Anéis'};
 for (const [cat, codes] of Object.entries(P)) {
   const g = document.querySelector('[data-cat="'+cat+'"]');
   codes.forEach(raw=>{
     const [c,f]=raw.split('|');
-    g.appendChild(card(c,f||c.toLowerCase(),'Prata 925'));
+    g.appendChild(card(c,f||c.toLowerCase(),'Prata 925',LBL[cat]));
   });
 }
 const ga=document.querySelector('[data-cat="aliancasaco"]');
-ACO.forEach(([c,f])=>ga.appendChild(card(c,f,'Aço')));
+ACO.forEach(([c,f])=>ga.appendChild(card(c,f,'Aço','Alianças de Aço')));
 const gm=document.querySelector('[data-cat="aliancasmoeda"]');
-MOEDA.forEach(([c,f])=>gm.appendChild(card(c,f,'Moeda')));
+MOEDA.forEach(([c,f])=>gm.appendChild(card(c,f,'Moeda','Alianças de Moeda')));
 const go=document.querySelector('[data-cat="aliancasouro"]');
-OURO.forEach(([c,w,g])=>go.appendChild(card(c,'ouro_'+c.toLowerCase(),'Ouro'+(w?' · '+w.replace('.',',')+' mm':'')+(g?' · '+g+' g':''))));
+OURO.forEach(([c,w,g])=>go.appendChild(card(c,'ouro_'+c.toLowerCase(),'Ouro'+(w?' · '+w.replace('.',',')+' mm':'')+(g?' · '+g+' g':''),'Alianças de Ouro')));
 
 function show(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.toggle('on',p.id===id));
@@ -136,6 +139,21 @@ function show(id){
   scrollTo(0,0);
 }
 document.querySelectorAll('[data-p],[data-go]').forEach(a=>a.addEventListener('click',()=>show(a.dataset.p||a.dataset.go)));
+
+function openFromHash(){
+  const id=decodeURIComponent(location.hash.slice(1));
+  if(!id) return;
+  const el=document.getElementById(id);
+  if(!el||!el.classList.contains('item')) return;
+  show(el.closest('.page').id);
+  setTimeout(()=>{
+    el.scrollIntoView({block:'center'});
+    el.style.outline='4px solid #d9b979';el.style.outlineOffset='3px';
+    setTimeout(()=>{el.style.outline=''},4000);
+  },50);
+}
+addEventListener('hashchange',openFromHash);
+openFromHash();
 
 const lb=document.getElementById('lb');
 document.addEventListener('click',e=>{
