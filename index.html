@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ornelas-Joias | Catálogo</title>
+<style>
+:root{--bg:#14233f;--gold:#d9b979;--card:#f7f9fd;--txt:#26324a}
+*{box-sizing:border-box;margin:0}
+body{font-family:Georgia,'Times New Roman',serif;background:var(--bg);color:#fff;min-height:100vh}
+nav{position:sticky;top:0;z-index:5;background:rgba(20,35,63,.95);display:flex;justify-content:flex-end;gap:22px;padding:14px 24px;border-bottom:1px solid rgba(217,185,121,.25)}
+nav a{color:#fff;font-size:17px;opacity:.8;cursor:pointer}
+nav a.on{opacity:1;font-weight:bold;color:var(--gold)}
+header{text-align:center;padding:40px 16px 20px}
+header svg{width:120px;height:auto}
+h1{font-size:clamp(36px,8vw,64px);margin-top:14px;letter-spacing:1px}
+.sub{color:var(--gold);font-style:italic;margin-top:6px;font-size:18px}
+.btns{display:flex;flex-direction:column;gap:14px;max-width:560px;margin:34px auto;padding:0 20px}
+.btn{display:block;text-align:center;background:var(--card);color:var(--txt);font:bold 24px Arial,sans-serif;padding:18px;border-radius:50px;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.3);cursor:pointer}
+.btn:hover{background:#fff}
+.btn.wa{background:#25d366;color:#fff}
+.page{display:none}.page.on{display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px;max-width:1100px;margin:10px auto 40px;padding:0 20px}
+.item{background:var(--card);border-radius:16px;overflow:hidden;color:var(--txt);box-shadow:0 4px 14px rgba(0,0,0,.3)}
+.item img{width:100%;aspect-ratio:1/1;object-fit:contain;background:#fff;display:block;cursor:zoom-in}
+.item .i{padding:12px 14px 14px;font-family:Arial,sans-serif}
+.item b{display:block;font-size:17px}
+.item small{color:#6b7690}
+.item a{display:block;margin-top:10px;text-align:center;background:#25d366;color:#fff;text-decoration:none;font-weight:bold;padding:9px;border-radius:30px;font-size:14px}
+h2{text-align:center;font-size:30px;margin:30px 0 4px;color:var(--gold)}
+.back{text-align:center;margin:10px 10px 30px}
+.back a{color:#fff;opacity:.75;font-family:Arial;cursor:pointer;text-decoration:underline}
+.soon{text-align:center;padding:60px 20px;font-size:22px;opacity:.85}
+footer{text-align:center;padding:30px 16px 50px;opacity:.7;font-family:Arial,sans-serif;font-size:13px}
+#lb{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:10;cursor:zoom-out}
+#lb img{max-width:94vw;max-height:90vh;background:#fff;border-radius:8px}
+</style>
+</head>
+<body>
+<nav>
+  <a data-p="home" class="on">Home</a><a data-p="prata">Prata 925</a><a data-p="banhado">Banhado</a>
+</nav>
+<header>
+  <svg viewBox="0 0 120 100" fill="none" stroke="#d9b979" stroke-width="3" stroke-linejoin="round"><path d="M30 6h60l26 30-56 60L4 36z"/><path d="M4 36h112M44 6l16 30 16-30M60 36v60"/></svg>
+  <h1>Ornelas-Joias</h1>
+</header>
+
+<section class="page on" id="home">
+  <div class="btns">
+    <a class="btn" data-go="banhado">Banhado</a>
+    <a class="btn" data-go="prata">Prata 925</a>
+    <a class="btn wa" data-wa>WhatsApp</a>
+  </div>
+</section>
+
+<section class="page" id="prata">
+  <div class="btns">
+    <a class="btn" data-go="novidades">Veja as Novidades</a>
+    <a class="btn" data-go="solitarios">Solitários</a>
+    <a class="btn" data-go="aliancas">Alianças</a>
+    <a class="btn" data-go="aneis">Anéis</a>
+    <a class="btn wa" data-wa>WhatsApp</a>
+  </div>
+</section>
+
+<section class="page" id="banhado"><div class="soon">Banhado — em breve.<br><br><a class="btn wa" data-wa style="display:inline-block;padding:14px 30px;font-size:18px">Pergunte pelo WhatsApp</a></div></section>
+<section class="page" id="novidades"><h2>Novidades</h2><div class="grid" data-cat="novidades"></div><div class="back"><a data-go="prata">← voltar</a></div></section>
+<section class="page" id="solitarios"><h2>Solitários</h2><div class="grid" data-cat="solitarios"></div><div class="back"><a data-go="prata">← voltar</a></div></section>
+<section class="page" id="aliancas"><h2>Alianças</h2><div class="grid" data-cat="aliancas"></div><div class="back"><a data-go="prata">← voltar</a></div></section>
+<section class="page" id="aneis"><h2>Anéis</h2><div class="grid" data-cat="aneis"></div><div class="back"><a data-go="prata">← voltar</a></div></section>
+
+<footer>© Ornelas-Joias · Prata 925 · Fotos ilustrativas</footer>
+<div id="lb"><img alt=""></div>
+
+<script>
+// Coloque aqui o seu WhatsApp com DDI+DDD, só números. Ex.: "5511999999999"
+const WHATSAPP = "5517992760853";
+
+const P = {
+  aliancas: ["ALP1207","ALP1208","ALP270253","ALP328","ALP328P","ALP331","ALP331P","ALP351","ALP351P","ALP352","ALP422","ALP540","ALP540P","ALP543","ALP543P","ALP544"],
+  solitarios: ["SOL02","SOL03","SOL06","SOL09","SOL11","SOL12","SOL14","SOL15","SOL20","SOL21","SOL27","SOL27|sol27_foto","SOL29","SOL31","SOL34","SOL36","SOL48","SOL978","SOL2118","SOL2118|sol2118a","AN154","AN167","AN259","AN439","AN0456","AN739","AN770","AN770|an770_foto","AN2080"],
+  aneis: ["AN133","AN183","AN241","AN242","AN269","AN430","AN473","AN490","AN0687","AN884","AN924","AN925","AN976","AN996","AN1004","AN1005","AN1279","AN1299"]
+};
+P.novidades = ["AN1299","AN1279","AN1005","AN1004","SOL36","SOL06"];
+
+const wa = t => "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(t);
+document.querySelectorAll('[data-wa]').forEach(a=>{a.href=wa("Olá! Vi o catálogo da Ornelas-Joias e gostaria de mais informações.");a.target="_blank"});
+
+for (const [cat, codes] of Object.entries(P)) {
+  const g = document.querySelector('[data-cat="'+cat+'"]');
+  codes.forEach(raw=>{
+    const [c,f]=raw.split('|');
+    const el=document.createElement('div');el.className='item';
+    el.innerHTML='<img loading="lazy" src="img/'+(f||c.toLowerCase())+'.jpg" alt="'+c+'"><div class="i"><b>Cód. '+c+'</b><small>Prata 925</small><a target="_blank" href="'+wa('Olá! Tenho interesse na peça '+c+' (Ornelas-Joias).')+'">Pedir pelo WhatsApp</a></div>';
+    g.appendChild(el);
+  });
+}
+
+function show(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.toggle('on',p.id===id));
+  const top = id==='home'?'home':(id==='banhado'?'banhado':'prata');
+  document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.dataset.p===top));
+  scrollTo(0,0);
+}
+document.querySelectorAll('[data-p],[data-go]').forEach(a=>a.addEventListener('click',()=>show(a.dataset.p||a.dataset.go)));
+
+const lb=document.getElementById('lb');
+document.addEventListener('click',e=>{
+  if(e.target.matches('.item img')){lb.firstElementChild.src=e.target.src;lb.style.display='flex'}
+  else if(lb.contains(e.target)||e.target===lb){lb.style.display='none'}
+});
+</script>
+</body>
+</html>
